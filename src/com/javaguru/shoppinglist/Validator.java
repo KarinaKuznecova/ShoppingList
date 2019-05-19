@@ -12,18 +12,16 @@ class Validator {
                 validateMinPrice(product.getPrice());
     }
 
-    boolean validatePrice(Product product) {
-        return validateMinPrice(product.getPrice());
+    boolean validatePrice(BigDecimal price) {
+        return price.doubleValue() >= 0;
     }
 
-    boolean validateName(Product product){
-        return validateMinLength(product.getName()) &&
-                validateMaxLength(product.getName());
+    boolean validateName(String name) {
+        return name.length() >= 3 && name.length() <= 30;
     }
 
-    boolean validateDiscount(Product product){
-        return validateMinDiscount(product.getDiscount()) &&
-                validateMaxDiscount(product.getDiscount());
+    boolean validateDiscount(BigDecimal discount) {
+        return discount.doubleValue() >=0 && discount.doubleValue() <=80;
     }
 
     private boolean validateMinLength(String name) {
