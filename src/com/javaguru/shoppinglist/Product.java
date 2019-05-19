@@ -2,34 +2,60 @@ package com.javaguru.shoppinglist;
 
 import java.math.BigDecimal;
 
-public class Product {
+class Product {
 
     private Long id;
     private String name;
     private BigDecimal price;
+    private String description;
+    private category category;
+    private BigDecimal discount;
 
-    public Long getId() {
+    Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    void setId(Long id) {
         this.id = id;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
-    public BigDecimal getPrice() {
+    BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    void setPrice(BigDecimal price) {
         this.price = price;
     }
 
+    String getDescription() {
+        return description;
+    }
+
+    void setDescription(String description) {
+        this.description = description;
+    }
+
+    category getCategory() {
+        return category;
+    }
+
+    void setCategory(category category) {
+        this.category = category;
+    }
+
+    BigDecimal getDiscount() {
+        return discount;
+    }
+
+    void setDiscount(BigDecimal discount) {
+        this.discount = discount;
+    }
 }
