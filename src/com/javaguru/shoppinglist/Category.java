@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist;
 
-public enum category {
+public enum Category {
     FRUIT,
     VEGETABLE,
     MILK,
