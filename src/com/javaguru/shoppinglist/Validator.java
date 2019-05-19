@@ -12,6 +12,20 @@ class Validator {
                 validateMinPrice(product.getPrice());
     }
 
+    boolean validatePrice(Product product) {
+        return validateMinPrice(product.getPrice());
+    }
+
+    boolean validateName(Product product){
+        return validateMinLength(product.getName()) &&
+                validateMaxLength(product.getName());
+    }
+
+    boolean validateDiscount(Product product){
+        return validateMinDiscount(product.getDiscount()) &&
+                validateMaxDiscount(product.getDiscount());
+    }
+
     private boolean validateMinLength(String name) {
         if (name.length() >= 3) {
             return true;
