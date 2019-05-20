@@ -9,21 +9,9 @@ class Validator {
                 validateMaxLength(product.getName()) &&
                 validateMinDiscount(product.getDiscount()) &&
                 validateMaxDiscount(product.getDiscount()) &&
-                validateMinPrice(product.getPrice());
-    }
+                validateMinPrice(product.getPrice()) &&
+                validateCategory(product.getCategory());
 
-    boolean validatePrice(Product product) {
-        return validateMinPrice(product.getPrice());
-    }
-
-    boolean validateName(Product product){
-        return validateMinLength(product.getName()) &&
-                validateMaxLength(product.getName());
-    }
-
-    boolean validateDiscount(Product product){
-        return validateMinDiscount(product.getDiscount()) &&
-                validateMaxDiscount(product.getDiscount());
     }
 
     private boolean validateMinLength(String name) {
@@ -55,9 +43,17 @@ class Validator {
     }
 
     private boolean validateMinPrice(BigDecimal price) {
-        if (price.doubleValue() >= 0) {
+        if (price.doubleValue() > 0) {
             return true;
         }
         throw new ValidationException("Price must be more than 0");
     }
+
+    private boolean validateCategory(category category) {
+        if (category != null) {
+            return true;
+        }
+        throw new ValidationException("No such category!");
+    }
 }
+

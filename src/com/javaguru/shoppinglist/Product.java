@@ -1,6 +1,7 @@
 package com.javaguru.shoppinglist;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 class Product {
 
@@ -10,6 +11,8 @@ class Product {
     private String description;
     private category category;
     private BigDecimal discount;
+    private BigDecimal discountPrice;
+
 
     Long getId() {
         return id;
@@ -57,5 +60,16 @@ class Product {
 
     void setDiscount(BigDecimal discount) {
         this.discount = discount;
+    }
+
+    @Override
+    public String toString() {
+
+        return "Product name " + name + ", " +
+                "Product price = " + price + ", " +
+                "Product discount = " + discount + " % ," +
+                "Product description: " + description + ", " +
+                "Product category: " + category;
+
     }
 }
