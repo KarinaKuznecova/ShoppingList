@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist;
 
-import jdk.jfr.Category;
+//import jdk.jfr.Category;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -80,11 +80,16 @@ class ShoppingListApplication {
                             productRepository.put(productIdSequence, product);
                             product.setId(productIdSequence);
                             productIdSequence++;
-                            System.out.println("Result: " + product.getId());
+                            System.out.println(
+                                    "Result: " + product.getId()
+                                            + " / Name: " + product.getName()
+                                            + " / Price: " + product.getPrice()
+                                            + " / Discount: " + product.getDiscount()
+                                            + " / Description: " + product.getDescription()
+                                            + " / Category: " + product.getCategory()
+                            );
 
                         }
-
-
 
                         break;
                     case 2:
