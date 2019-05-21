@@ -12,7 +12,6 @@ class ShoppingListApplication {
     public static void main(String[] args) {
         Map<Long, Product> productRepository = new HashMap<>();
         Long productIdSequence = 1L;
-       // Product product = new Product();
         Validator validator = new Validator();
         while (true) {
             Scanner scanner = new Scanner(System.in);
