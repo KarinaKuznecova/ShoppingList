@@ -30,7 +30,7 @@ class ShoppingListApplication {
                         BigDecimal price = new BigDecimal(scanner.nextLine());
 
                         System.out.println("Enter product discount: ");
-                        BigDecimal discouunt = new BigDecimal(scanner.nextLine());
+                        BigDecimal discount = new BigDecimal(scanner.nextLine());
 
                         System.out.println("Enter product description: ");
                         String description = scanner.nextLine();
@@ -73,15 +73,19 @@ class ShoppingListApplication {
 
                         product.setName(name);
                         product.setPrice(price);
-                        product.setDiscount(discouunt);
+                        product.setDiscount(discount);
                         product.setDescription(description);
 
                         if (validator.validateProduct(product)) {
                             productRepository.put(productIdSequence, product);
                             product.setId(productIdSequence);
                             productIdSequence++;
+                            System.out.println("Result: " + product.getId());
+
                         }
-                        System.out.println(productRepository);
+
+
+
                         break;
                     case 2:
                         System.out.println("Enter product id: ");

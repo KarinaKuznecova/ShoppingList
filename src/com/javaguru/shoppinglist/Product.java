@@ -15,13 +15,12 @@ class Product {
     private BigDecimal discount;
     private BigDecimal discountPrice;
 
-
     Long getId() {
         return id;
     }
 
-    void setId(Long productIdSequence) {
-        this.id = productIdSequence;
+    void setId(Long id) {
+        this.id = id;
     }
 
     String getName() {
@@ -66,11 +65,8 @@ class Product {
     }
 
     void setDiscountPrice(){
-        BigDecimal discount = this.discount;
         BigDecimal hundred = new BigDecimal("100");
-        BigDecimal prise = this.price;
-
-        discountPrice = price.subtract((prise.multiply(discount).divide(hundred, 2, CEILING)));
+        discountPrice = price.subtract((price.multiply(discount).divide(hundred, 2, CEILING)));
     }
 
     @Override
