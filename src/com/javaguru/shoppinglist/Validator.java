@@ -25,7 +25,7 @@ class Validator {
     }
 
     boolean validatePrice(BigDecimal price) {
-        if (price.doubleValue() >= 0) {
+        if (price.doubleValue() > 0) {
             return true;
         }
         throw new ValidationException("Price must be more than 0");
