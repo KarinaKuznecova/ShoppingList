@@ -3,6 +3,8 @@ package com.javaguru.shoppinglist;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import static java.math.RoundingMode.CEILING;
+
 class Product {
 
     private Long id;
@@ -60,6 +62,15 @@ class Product {
 
     void setDiscount(BigDecimal discount) {
         this.discount = discount;
+        setDiscountPrice();
+    }
+
+    void setDiscountPrice(){
+        BigDecimal discount = this.discount;
+        BigDecimal hundred = new BigDecimal("100");
+        BigDecimal prise = this.price;
+
+        discountPrice = price.subtract((prise.multiply(discount).divide(hundred, 2, CEILING)));
     }
 
     @Override
@@ -69,7 +80,8 @@ class Product {
                 "Product price = " + price + ", " +
                 "Product discount = " + discount + " % ," +
                 "Product description: " + description + ", " +
-                "Product category: " + category;
+                "Product category: " + category +
+                discountPrice;
 
     }
 }
