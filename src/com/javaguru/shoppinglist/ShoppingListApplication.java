@@ -12,7 +12,7 @@ class ShoppingListApplication {
     public static void main(String[] args) {
         Map<Long, Product> productRepository = new HashMap<>();
         Long productIdSequence = 1L;
-        Product product = new Product();
+       // Product product = new Product();
         Validator validator = new Validator();
         while (true) {
             Scanner scanner = new Scanner(System.in);
@@ -21,6 +21,7 @@ class ShoppingListApplication {
                 System.out.println("2. Find product by id");
                 System.out.println("3. Exit");
                 Integer userInput = Integer.valueOf(scanner.nextLine());
+                Product product = new Product();
                 switch (userInput) {
                     case 1:
                         System.out.println("Enter product name: ");
