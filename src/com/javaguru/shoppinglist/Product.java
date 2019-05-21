@@ -20,8 +20,8 @@ class Product {
         return id;
     }
 
-    void setId(Long id) {
-        this.id = id;
+    void setId(Long productIdSequence) {
+        this.id = productIdSequence;
     }
 
     String getName() {
@@ -80,8 +80,9 @@ class Product {
                 "Product price = " + price + ", " +
                 "Product discount = " + discount + " % ," +
                 "Product description: " + description + ", " +
-                "Product category: " + category +
-                discountPrice;
+                "Product category: " + category + ", " +
+                "Product discount price= " + discountPrice + ", " +
+                "Product ID= " + id;
 
     }
 }

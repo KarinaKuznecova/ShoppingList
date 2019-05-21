@@ -79,6 +79,7 @@ class ShoppingListApplication {
                         if (validator.validateProduct(product)) {
                             productRepository.put(productIdSequence, product);
                             productIdSequence++;
+                            product.setId(productIdSequence);
                         }
                         System.out.println(productRepository);
                         break;
