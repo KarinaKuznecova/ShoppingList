@@ -18,14 +18,15 @@ class Validator {
     }
 
     boolean validateDiscount(BigDecimal discount) {
-        if (discount.doubleValue() >=0 && discount.doubleValue() <=80) {
+        BigDecimal maxDiscount = new BigDecimal(80);
+        if (discount.compareTo(BigDecimal.ZERO) >= 0 && discount.compareTo(maxDiscount) <=0) {
             return true;
         }
         throw new ValidationException("Discount must be more than 0% and less than 80%");
     }
 
     boolean validatePrice(BigDecimal price) {
-        if (price.doubleValue() > 0) {
+        if (price.compareTo(BigDecimal.ZERO) > 0) {
             return true;
         }
         throw new ValidationException("Price must be more than 0");
