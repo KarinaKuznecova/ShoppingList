@@ -80,15 +80,7 @@ class ShoppingListApplication {
                             productRepository.put(productIdSequence, product);
                             product.setId(productIdSequence);
                             productIdSequence++;
-                            System.out.println(
-                                    "Result: " + product.getId()
-                                            + " / Name: " + product.getName()
-                                            + " / Price: " + product.getPrice()
-                                            + " / Discount: " + product.getDiscount()
-                                            + " / Description: " + product.getDescription()
-                                            + " / Category: " + product.getCategory()
-                            );
-
+                            System.out.println(product.toString());
                         }
 
                         break;

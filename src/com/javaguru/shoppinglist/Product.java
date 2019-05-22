@@ -72,13 +72,12 @@ class Product {
     @Override
     public String toString() {
 
-        return "Product name " + name + ", " +
-                "Product price = " + price + ", " +
-                "Product discount = " + discount + " % ," +
-                "Product description: " + description + ", " +
-                "Product category: " + category + ", " +
-                "Product discount price= " + discountPrice + ", " +
-                "Product ID= " + id;
-
+        return "ID: " + id
+                + " | Name: " + name
+                + " | Price = " + price + " \u20AC/kg"
+                + " | Discount = " + discount + " %"
+                + " | Description: " + description
+                + " | Category: " + category
+                + " | Discount price= " + discountPrice + " \u20AC/kg";
     }
 }
