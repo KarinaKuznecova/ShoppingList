@@ -53,9 +53,17 @@ class Validator {
     }
 
     private boolean validateMinPrice(BigDecimal price) {
-        if (price.doubleValue() >= 0) {
+        if (price.doubleValue() > 0) {
             return true;
         }
         throw new ValidationException("Price must be more than 0");
     }
+
+    private boolean validateCategory(category category) {
+        if (category != null) {
+            return true;
+        }
+        throw new ValidationException("No such category!");
+    }
 }
+
