@@ -26,6 +26,4 @@ class Validator {
     void validatePrice(BigDecimal price) {
         if (price.compareTo(BigDecimal.ZERO) <= 0) {
             throw new ValidationException("Price must be more than 0");
-        }
-    }
 }

@@ -1,6 +1,9 @@
 package com.javaguru.shoppinglist;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+import static java.math.RoundingMode.CEILING;
 
 class Product {
 
@@ -10,6 +13,7 @@ class Product {
     private String description;
     private Category category;
     private BigDecimal discount;
+    private BigDecimal discountPrice;
 
     Long getId() {
         return id;
@@ -57,5 +61,23 @@ class Product {
 
     void setDiscount(BigDecimal discount) {
         this.discount = discount;
+        setDiscountPrice();
+    }
+
+    void setDiscountPrice(){
+        BigDecimal hundred = new BigDecimal("100");
+        discountPrice = price.subtract((price.multiply(discount).divide(hundred, 2, CEILING)));
+    }
+
+    @Override
+    public String toString() {
+
+        return "ID: " + id
+                + " | Name: " + name
+                + " | Price = " + price + " \u20AC/kg"
+                + " | Discount = " + discount + " %"
+                + " | Description: " + description
+                + " | Category: " + category
+                + " | Discount price= " + discountPrice + " \u20AC/kg";
     }
 }
