@@ -11,7 +11,7 @@ class Product {
     private String name;
     private BigDecimal price;
     private String description;
-    private category category;
+    private Category category;
     private BigDecimal discount;
     private BigDecimal discountPrice;
 
@@ -47,11 +47,11 @@ class Product {
         this.description = description;
     }
 
-    category getCategory() {
+    Category getCategory() {
         return category;
     }
 
-    void setCategory(category category) {
+    void setCategory(Category category) {
         this.category = category;
     }
 

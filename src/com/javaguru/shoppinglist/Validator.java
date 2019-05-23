@@ -9,9 +9,19 @@ class Validator {
                 validateMaxLength(product.getName()) &&
                 validateMinDiscount(product.getDiscount()) &&
                 validateMaxDiscount(product.getDiscount()) &&
-                validateMinPrice(product.getPrice()) &&
-                validateCategory(product.getCategory());
+                validateMinPrice(product.getPrice());
+    }
 
+    boolean validatePrice(BigDecimal price) {
+        return price.doubleValue() >= 0;
+    }
+
+    boolean validateName(String name) {
+        return name.length() >= 3 && name.length() <= 30;
+    }
+
+    boolean validateDiscount(BigDecimal discount) {
+        return discount.doubleValue() >=0 && discount.doubleValue() <=80;
     }
 
     private boolean validateMinLength(String name) {
