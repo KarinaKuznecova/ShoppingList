@@ -11,7 +11,7 @@ class Validator {
     }
 
     void validateName(String name) {
-        if (name.length() < 3 && name.length() > 30) {
+        if (name.length() < 3 || name.length() > 30) {
             throw new ValidationException("Name length should be more than 3 symbols and less than 30");
         }
     }
