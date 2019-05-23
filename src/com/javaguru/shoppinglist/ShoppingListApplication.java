@@ -1,6 +1,6 @@
 package com.javaguru.shoppinglist;
 
-import jdk.jfr.Category;
+//import jdk.jfr.Category;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -18,7 +18,8 @@ class ShoppingListApplication {
             try {
                 System.out.println("1. Create product");
                 System.out.println("2. Find product by id");
-                System.out.println("3. Exit");
+                System.out.println("3. Delete product");
+                System.out.println("4. Exit");
                 Integer userInput = Integer.valueOf(scanner.nextLine());
                 Product product = new Product();
                 switch (userInput) {
@@ -80,11 +81,8 @@ class ShoppingListApplication {
                             productRepository.put(productIdSequence, product);
                             product.setId(productIdSequence);
                             productIdSequence++;
-                            System.out.println("Result: " + product.getId());
-
+                            System.out.println(product.toString());
                         }
-
-
 
                         break;
                     case 2:
@@ -92,7 +90,17 @@ class ShoppingListApplication {
                         long id = scanner.nextLong();
                         Product findProductResult = productRepository.get(id);
                         System.out.println(findProductResult);
+                        break;
                     case 3:
+                        System.out.println(productRepository);
+                        System.out.println("Enter product id to DELETE: ");
+                        long idDel = scanner.nextLong();
+                        Product delProductResult = productRepository.remove(idDel);
+                        System.out.println("Product " + delProductResult.getName() + " is deleted!");
+                        System.out.println(productRepository);
+
+                        break;
+                    case 4:
                         return;
                 }
             } catch (Exception e) {
