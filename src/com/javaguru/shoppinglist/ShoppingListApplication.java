@@ -1,7 +1,5 @@
 package com.javaguru.shoppinglist;
 
-//import jdk.jfr.Category;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +9,7 @@ class ShoppingListApplication {
 
     public static void main(String[] args) {
         Map<Long, Product> productRepository = new HashMap<>();
-        Long productIdSequence = 1L;
+        Long productIdSequence = 0L;
         Validator validator = new Validator();
         while (true) {
             Scanner scanner = new Scanner(System.in);
@@ -19,11 +17,12 @@ class ShoppingListApplication {
                 System.out.println("1. Create product");
                 System.out.println("2. Find product by id");
                 System.out.println("3. Delete product");
-                System.out.println("4. Exit");
+                System.out.println("4. Edit Product");
+                System.out.println("5. Exit");
                 Integer userInput = Integer.valueOf(scanner.nextLine());
-                Product product = new Product();
                 switch (userInput) {
                     case 1:
+                        Product product = new Product();
                         System.out.println("Enter product name: ");
                         String name = scanner.nextLine();
 
@@ -38,33 +37,33 @@ class ShoppingListApplication {
 
                         System.out.println("Enter product category: ");
 
-                        System.out.println("1. " + category.ALCOHOL);
-                        System.out.println("2. " + category.FISH);
-                        System.out.println("3. " + category.FRUIT);
-                        System.out.println("4. " + category.MEAT);
-                        System.out.println("5. " + category.MILK);
-                        System.out.println("6. " + category.VEGETABLE);
+                        System.out.println("1. " + Category.ALCOHOL);
+                        System.out.println("2. " + Category.FISH);
+                        System.out.println("3. " + Category.FRUIT);
+                        System.out.println("4. " + Category.MEAT);
+                        System.out.println("5. " + Category.MILK);
+                        System.out.println("6. " + Category.VEGETABLE);
 
                         try {
                             Integer userInputCategory = Integer.valueOf(scanner.nextLine());
                             switch (userInputCategory) {
                                 case 1:
-                                    product.setCategory(category.ALCOHOL);
+                                    product.setCategory(Category.ALCOHOL);
                                     break;
                                 case 2:
-                                    product.setCategory(category.FISH);
+                                    product.setCategory(Category.FISH);
                                     break;
                                 case 3:
-                                    product.setCategory(category.FRUIT);
+                                    product.setCategory(Category.FRUIT);
                                     break;
                                 case 4:
-                                    product.setCategory(category.MEAT);
+                                    product.setCategory(Category.MEAT);
                                     break;
                                 case 5:
-                                    product.setCategory(category.MILK);
+                                    product.setCategory(Category.MILK);
                                     break;
                                 case 6:
-                                    product.setCategory(category.VEGETABLE);
+                                    product.setCategory(Category.VEGETABLE);
                                     break;
                             }
                         } catch (Exception e) {
@@ -77,12 +76,11 @@ class ShoppingListApplication {
                         product.setDiscount(discount);
                         product.setDescription(description);
 
-                        if (validator.validateProduct(product)) {
-                            productRepository.put(productIdSequence, product);
-                            product.setId(productIdSequence);
-                            productIdSequence++;
-                            System.out.println(product.toString());
-                        }
+                        validator.validateProduct(product);
+                        productRepository.put(productIdSequence, product);
+                        product.setId(productIdSequence);
+                        productIdSequence++;
+                        System.out.println(product.toString());
 
                         break;
                     case 2:
@@ -101,9 +99,54 @@ class ShoppingListApplication {
 
                         break;
                     case 4:
+                        System.out.println("Enter product id to edit: ");
+                        long idToEdit = scanner.nextLong();
+
+                        System.out.println("Please, choose what to do:");
+                        System.out.println();
+                        System.out.println("1. Change name");
+                        System.out.println("2. Change price");
+                        System.out.println("3. Set Discount");
+                        System.out.println("4. Change description");
+                        System.out.println();
+                        int pickedAction = scanner.nextInt();
+
+                        switch (pickedAction) {
+                            case 1:
+                                System.out.println("Enter new name: ");
+                                String newName = scanner.nextLine();
+                                newName = scanner.nextLine();
+                                validator.validateName(newName);
+                                productRepository.get(idToEdit).setName(newName);
+                                break;
+                            case 2:
+                                System.out.println("Enter new price: ");
+                                BigDecimal newPrice = BigDecimal.valueOf(scanner.nextDouble());
+                                validator.validatePrice(newPrice);
+                                productRepository.get(idToEdit).setPrice(newPrice);
+                                break;
+                            case 3:
+                                System.out.println("Enter new discount: ");
+                                BigDecimal newDiscount = BigDecimal.valueOf(scanner.nextDouble());
+                                validator.validateDiscount(newDiscount);
+                                productRepository.get(idToEdit).setDiscount(newDiscount);
+
+                                break;
+                            case 4:
+                                System.out.println("Enter new description: ");
+                                String newDescription = scanner.nextLine();
+                                newDescription = scanner.nextLine();
+                                productRepository.get(idToEdit).setDescription(newDescription);
+                                break;
+                        }
+                        System.out.println("Information is updated");
+                        break;
+
+                    case 5:
                         return;
                 }
-            } catch (Exception e) {
+            } catch (
+                    Exception e) {
                 e.printStackTrace();
                 System.out.println("Error! Please try again.");
             }
