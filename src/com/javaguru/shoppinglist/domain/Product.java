@@ -1,11 +1,10 @@
-package com.javaguru.shoppinglist;
+package com.javaguru.shoppinglist.domain;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 import static java.math.RoundingMode.CEILING;
 
-class Product {
+public class Product {
 
     private Long id;
     private String name;
@@ -15,51 +14,51 @@ class Product {
     private BigDecimal discount;
     private BigDecimal discountPrice;
 
-    Long getId() {
+    public Long getId() {
         return id;
     }
 
-    void setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    BigDecimal getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    void setPrice(BigDecimal price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
-    String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    Category getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    void setCategory(Category category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
-    BigDecimal getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    void setDiscount(BigDecimal discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
         setDiscountPrice();
     }
@@ -78,6 +77,6 @@ class Product {
                 + " | Discount = " + discount + " %"
                 + " | Description: " + description
                 + " | Category: " + category
-                + " | Discount price= " + discountPrice + " \u20AC/kg";
+                + " | Discount price = " + discountPrice + " \u20AC/kg";
     }
 }
