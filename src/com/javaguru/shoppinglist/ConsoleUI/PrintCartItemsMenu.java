@@ -18,7 +18,7 @@ class PrintCartItemsMenu implements MenuItem {
         for (int i = 0; i < shoppingCarts.size(); i++) {
             System.out.println(i + ". " + shoppingCarts.get(i));
         }
-        int chosenList = reader.getUserInput("Enter number to pick a list");
+        int chosenList = reader.getUserInput("Enter number to pick a cart");
 
         shoppingCarts.get(chosenList).printAllProducts();
     }

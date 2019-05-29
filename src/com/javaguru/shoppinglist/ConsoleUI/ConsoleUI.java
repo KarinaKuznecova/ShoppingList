@@ -43,10 +43,8 @@ public class ConsoleUI {
         System.out.println("5. Delete product by id");
         System.out.println("6. Print all products");
         System.out.println("7. Create new shopping cart");
-        System.out.println("8. Add product to additional shopping list");
-        System.out.println("9. Print additional shopping list");
-        System.out.println("10. Delete all products");
-        System.out.println("11. Exit");
+        System.out.println("8. Add product to shopping cart");
+        System.out.println("9. Print products from shopping cart");
 
         int pickedNumber = reader.getUserInput("Enter a number: ");
         menuSelected(pickedNumber);

@@ -1,4 +1,5 @@
 package com.javaguru.shoppinglist.ConsoleUI;
+
 import java.util.Scanner;
 
 class Reader {

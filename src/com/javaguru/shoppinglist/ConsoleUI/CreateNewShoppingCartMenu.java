@@ -15,11 +15,11 @@ class CreateNewShoppingCartMenu implements MenuItem {
 
     @Override
     public void action(ProductService productService) {
-        String name = reader.getUserInputLine("Enter name for new shopping list");
-        String description = reader.getUserInputLine("Enter description for new shopping list");
-        ShoppingCart shoppingList = new ShoppingCart(name, description);
-        shoppingCarts.add(shoppingList);
-        System.out.println("Created shopping list: ");
-        System.out.println(shoppingList);
+        String name = reader.getUserInputLine("Enter name for new shopping cart");
+        String description = reader.getUserInputLine("Enter description for new shopping cart");
+        ShoppingCart cart = new ShoppingCart(name, description);
+        shoppingCarts.add(cart);
+        System.out.println("Created shopping cart: ");
+        System.out.println(cart);
     }
 }
