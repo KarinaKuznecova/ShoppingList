@@ -56,8 +56,6 @@ public class ConsoleUI {
             menuItems.get(index).action(productService);
         } catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println("Wrong number, try again");
-        } finally {
-            mainMenu();
         }
     }
 }
