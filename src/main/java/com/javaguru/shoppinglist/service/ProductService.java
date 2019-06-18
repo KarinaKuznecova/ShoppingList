@@ -5,8 +5,13 @@ import com.javaguru.shoppinglist.repository.InMemoryRepository;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 
 public class ProductService {
-    private InMemoryRepository repository = new InMemoryRepository();
-    private ProductValidationService validationService = new ProductValidationService();
+    private InMemoryRepository repository;
+    private ProductValidationService validationService;
+
+    public ProductService(InMemoryRepository repository, ProductValidationService validationService) {
+        this.repository = repository;
+        this.validationService = validationService;
+    }
 
     public Long createProduct(Product product) {
         validationService.validate(product);
@@ -14,13 +19,16 @@ public class ProductService {
         return createdProduct.getId();
     }
 
-    public Product findProductById(Long id) {
+    public Product getProductById(Long id) {
         return repository.getProductById(id);
     }
 
-    public Product deleteProductById(Long id) {
-        return repository.removeProductById(id);
+    public void printAll() {
+        repository.printAll();
+    }
 
+    public void deleteById(Long id) {
+        repository.removeProductById(id);
     }
 
 }
