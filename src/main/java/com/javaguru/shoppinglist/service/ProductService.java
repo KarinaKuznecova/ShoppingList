@@ -4,6 +4,8 @@ import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.repository.InMemoryRepository;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 
+import java.math.BigDecimal;
+
 public class ProductService {
     private InMemoryRepository repository;
     private ProductValidationService validationService;
@@ -31,4 +33,15 @@ public class ProductService {
         repository.removeProductById(id);
     }
 
+    public void setDiscountById(long id, BigDecimal discount) {
+    }
+
+    public void changeName(long id, String newName) {
+    }
+
+    public void setPriceById(long id, BigDecimal newPrice) {
+    }
+
+    public void changeProductDescription(long id, String newDescription) {
+    }
 }
