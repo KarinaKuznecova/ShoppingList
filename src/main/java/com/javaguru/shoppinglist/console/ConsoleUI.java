@@ -101,10 +101,6 @@ public class ConsoleUI {
         product.setDiscount(discount);
         product.setDescription(description);
 
-        /*validator.validateProduct(product);
-        productRepository.put(productIdSequence, product);
-        product.setId(productIdSequence);
-        productIdSequence++;*/
         productService.createProduct(product);
         System.out.println(product.toString());
     }
@@ -143,19 +139,19 @@ public class ConsoleUI {
             case 1:
                 System.out.println("Enter new name: ");
                 String newName = scanner.nextLine();
-                //validator.validateName(newName);
+
                 productService.findProductById(id).setName(newName);
                 break;
             case 2:
                 System.out.println("Enter new price: ");
                 BigDecimal newPrice = BigDecimal.valueOf(scanner.nextDouble());
-                //validator.validatePrice(newPrice);
+
                 productService.findProductById(id).setPrice(newPrice);
                 break;
             case 3:
                 System.out.println("Enter new discount: ");
                 BigDecimal newDiscount = BigDecimal.valueOf(scanner.nextDouble());
-                //validator.validateDiscount(newDiscount);
+
                 productService.findProductById(id).setDiscount(newDiscount);
                 break;
             case 4:
