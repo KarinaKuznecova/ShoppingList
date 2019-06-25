@@ -34,14 +34,18 @@ public class ProductService {
     }
 
     public void setDiscountById(long id, BigDecimal discount) {
+        repository.getProductById(id).setDiscount(discount);
     }
 
-    public void changeName(long id, String newName) {
+    public void changeNameById(long id, String newName) {
+        repository.getProductById(id).setName(newName);
     }
 
     public void setPriceById(long id, BigDecimal newPrice) {
+        repository.getProductById(id).setPrice(newPrice);
     }
 
     public void changeProductDescription(long id, String newDescription) {
+        repository.getProductById(id).setDescription(newDescription);
     }
 }
