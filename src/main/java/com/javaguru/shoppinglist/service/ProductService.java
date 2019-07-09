@@ -3,7 +3,6 @@ package com.javaguru.shoppinglist.service;
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.repository.InMemoryRepository;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
-import com.javaguru.shoppinglist.service.validation.Validator;
 
 import java.math.BigDecimal;
 
@@ -35,15 +34,17 @@ public class ProductService {
     }
 
     public void setDiscountById(long id, BigDecimal discount) {
-        validationService.ProductValidateDiscount(discount);
+        validationService.productValidateDiscount(discount);
         repository.getProductById(id).setDiscount(discount);
     }
 
     public void changeNameById(long id, String newName) {
+        validationService.productValidateChangeName(newName);
         repository.getProductById(id).setName(newName);
     }
 
     public void setPriceById(long id, BigDecimal newPrice) {
+        validationService.productValidateChangePrice(newPrice);
         repository.getProductById(id).setPrice(newPrice);
     }
 
