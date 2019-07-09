@@ -19,7 +19,8 @@ public class ProductValidationService {
         validationRules.forEach(s -> s.validate(product));
     }
 
-    public void productValidateDiscount(BigDecimal discount) {
+    public void productValidateDiscount(BigDecimal discount, Product product) {
+        possiblyForDiscount(product);
         BigDecimal maxDiscount = new BigDecimal(80);
         if (discount.compareTo(BigDecimal.ZERO) < 0 || discount.compareTo(maxDiscount) > 0) {
             throw new ProductValidationException("Discount must be more than 0% and less than 80%");
@@ -35,6 +36,12 @@ public class ProductValidationService {
     public void productValidateChangePrice(BigDecimal price) {
         if (price.compareTo(BigDecimal.ZERO) <= 0) {
             throw new ProductValidationException("Price must be more than 0");
+        }
+    }
+    private void possiblyForDiscount(Product product) {
+        BigDecimal minPriceForDiscount = new BigDecimal(20);
+        if (product.getPrice().compareTo(minPriceForDiscount) <= 0) {
+            throw new ProductValidationException("Can't set discount to product cheaper than 20");
         }
     }
 }

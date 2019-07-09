@@ -34,7 +34,7 @@ public class ProductService {
     }
 
     public void setDiscountById(long id, BigDecimal discount) {
-        validationService.productValidateDiscount(discount);
+        validationService.productValidateDiscount(discount, repository.getProductById(id));
         repository.getProductById(id).setDiscount(discount);
     }
 
