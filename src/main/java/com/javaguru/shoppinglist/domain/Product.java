@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 
 import static java.math.RoundingMode.CEILING;
 
-//@Entity
-//@Table(name = "Product")
+@Entity
+@Table(name = "Product")
 public class Product {
 
     @Id
