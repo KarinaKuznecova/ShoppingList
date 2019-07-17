@@ -3,18 +3,24 @@ package com.javaguru.shoppinglist.service;
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.repository.InMemoryRepository;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
+@Service
 public class ProductService {
     private InMemoryRepository repository;
     private ProductValidationService validationService;
 
+    @Autowired
     public ProductService(InMemoryRepository repository, ProductValidationService validationService) {
         this.repository = repository;
         this.validationService = validationService;
     }
 
+    @Transactional
     public Long createProduct(Product product) {
         validationService.validate(product);
         Product createdProduct = repository.add(product);

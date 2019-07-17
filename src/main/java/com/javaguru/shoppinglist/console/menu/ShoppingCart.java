@@ -1,16 +1,21 @@
-package com.javaguru.shoppinglist.console;
+package com.javaguru.shoppinglist.console.menu;
 
 import com.javaguru.shoppinglist.domain.Product;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class ShoppingCart {
 
     private String name;
     private String description;
 
     private List<Product> products = new ArrayList<>();
+
+    public ShoppingCart() {
+    }
 
     ShoppingCart(String name, String description) {
         this.name = name;

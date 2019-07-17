@@ -1,9 +1,9 @@
 package com.javaguru.shoppinglist.console;
 import java.util.Scanner;
 
-class Reader {
+public class Reader {
 
-    int getUserInput(String prompt) {
+    public int getUserInput(String prompt) {
         System.out.println(prompt);
         Scanner sc = new Scanner(System.in);
         try {
@@ -15,13 +15,13 @@ class Reader {
         return 0;
     }
 
-    String getUserInputLine(String prompt) {
+    public String getUserInputLine(String prompt) {
         System.out.println(prompt);
         Scanner sc = new Scanner(System.in);
         return sc.nextLine();
     }
 
-    double getUserInputDouble(String prompt) {
+    public double getUserInputDouble(String prompt) {
         System.out.println(prompt);
         Scanner sc = new Scanner(System.in);
         try {
