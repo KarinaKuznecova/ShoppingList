@@ -29,19 +29,26 @@ public class ProductService {
         repository.printAll();
     }
 
-    public void deleteById(Long id) {
+    public void deleteProductById(Long id) {
         repository.removeProductById(id);
     }
 
     public void setDiscountById(long id, BigDecimal discount) {
+        validationService.productValidateDiscount(discount, repository.getProductById(id));
+        repository.getProductById(id).setDiscount(discount);
     }
 
-    public void changeName(long id, String newName) {
+    public void changeNameById(long id, String newName) {
+        validationService.productValidateChangeName(newName);
+        repository.getProductById(id).setName(newName);
     }
 
     public void setPriceById(long id, BigDecimal newPrice) {
+        validationService.productValidateChangePrice(newPrice);
+        repository.getProductById(id).setPrice(newPrice);
     }
 
     public void changeProductDescription(long id, String newDescription) {
+        repository.getProductById(id).setDescription(newDescription);
     }
 }

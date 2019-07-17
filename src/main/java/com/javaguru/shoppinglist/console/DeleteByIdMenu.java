@@ -8,6 +8,6 @@ class DeleteByIdMenu implements MenuItem {
     @Override
     public void action(ProductService productService) {
         long id = reader.getUserInput("Enter product id: ");
-        productService.deleteById(id);
+        productService.deleteProductById(id);
     }
 }

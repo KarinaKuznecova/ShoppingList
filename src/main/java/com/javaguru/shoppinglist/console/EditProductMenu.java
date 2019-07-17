@@ -14,7 +14,7 @@ class EditProductMenu implements MenuItem {
         switch (pickedAction) {
             case 1:
                 String newName = reader.getUserInputLine("Enter new name");
-                productService.changeName(id, newName);
+                productService.changeNameById(id, newName);
                 break;
             case 2:
                 BigDecimal newPrice = BigDecimal.valueOf(reader.getUserInputDouble("Enter new price"));

@@ -63,7 +63,7 @@ public class Product {
         setDiscountPrice();
     }
 
-    void setDiscountPrice(){
+    void setDiscountPrice() {
         BigDecimal hundred = new BigDecimal("100");
         discountPrice = price.subtract((price.multiply(discount).divide(hundred, 2, CEILING)));
     }
