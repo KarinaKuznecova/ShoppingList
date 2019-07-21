@@ -1,6 +1,5 @@
 package com.javaguru.shoppinglist.console.menu;
 
-import com.javaguru.shoppinglist.console.MenuItem;
 import com.javaguru.shoppinglist.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

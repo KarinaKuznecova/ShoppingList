@@ -2,11 +2,12 @@ package com.javaguru.shoppinglist.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 import static java.math.RoundingMode.CEILING;
 
 @Entity
-@Table(name = "Product")
+@Table(name = "Products")
 public class Product {
 
     @Id
@@ -85,6 +86,28 @@ public class Product {
     void setDiscountPrice() {
         BigDecimal hundred = new BigDecimal("100");
         discountPrice = price.subtract((price.multiply(discount).divide(hundred, 2, CEILING)));
+    }
+
+    public BigDecimal getDiscountPrice() {
+        return discountPrice;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(name, product.name) &&
+                Objects.equals(price, product.price) &&
+                Objects.equals(description, product.description) &&
+                category == product.category &&
+                Objects.equals(discount, product.discount) &&
+                Objects.equals(discountPrice, product.discountPrice);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, description, category, discount, discountPrice);
     }
 
     @Override

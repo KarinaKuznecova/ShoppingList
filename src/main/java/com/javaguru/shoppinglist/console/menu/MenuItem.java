@@ -1,6 +1,5 @@
-package com.javaguru.shoppinglist.console;
+package com.javaguru.shoppinglist.console.menu;
 
 public interface MenuItem {
-
     void action();
 }

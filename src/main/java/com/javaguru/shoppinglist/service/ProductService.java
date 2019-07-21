@@ -1,21 +1,21 @@
 package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.InMemoryRepository;
+import com.javaguru.shoppinglist.repository.ProductRepository;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
-@Service
+@Component
 public class ProductService {
-    private InMemoryRepository repository;
+    private ProductRepository repository;
     private ProductValidationService validationService;
 
     @Autowired
-    public ProductService(InMemoryRepository repository, ProductValidationService validationService) {
+    public ProductService(ProductRepository repository, ProductValidationService validationService) {
         this.repository = repository;
         this.validationService = validationService;
     }
@@ -28,7 +28,8 @@ public class ProductService {
     }
 
     public Product getProductById(Long id) {
-        return repository.getProductById(id);
+        return repository.getProductById(id).orElseThrow(() ->
+                new IllegalArgumentException("Product with id " + id + " not found"));
     }
 
     public void printAll() {
@@ -39,22 +40,31 @@ public class ProductService {
         repository.removeProductById(id);
     }
 
-    public void setDiscountById(long id, BigDecimal discount) {
-        validationService.productValidateDiscount(discount, repository.getProductById(id));
-        repository.getProductById(id).setDiscount(discount);
+    public void setDiscountById(Long id, BigDecimal discount) {
+        validationService.productValidateDiscount(discount, getProductById(id));
+        repository.changeDiscount(id, discount);
     }
 
-    public void changeNameById(long id, String newName) {
-        validationService.productValidateChangeName(newName);
-        repository.getProductById(id).setName(newName);
+    public void setPriceById(Long id, BigDecimal price) {
+        validationService.productValidateChangePrice(price);
+        repository.changePrice(id, price);
     }
 
-    public void setPriceById(long id, BigDecimal newPrice) {
-        validationService.productValidateChangePrice(newPrice);
-        repository.getProductById(id).setPrice(newPrice);
+    public void changeProductDescription(long id, String description) {
+        repository.changeDescription(id, description);
     }
 
-    public void changeProductDescription(long id, String newDescription) {
-        repository.getProductById(id).setDescription(newDescription);
+    public void changeNameById(long id, String name) {
+        validationService.productValidateChangeName(name);
+        repository.changeName(id, name);
     }
+
+    public void removeAllProducts() {
+        repository.removeAllProducts();
+    }
+
+    public long getStorageSize() {
+        return repository.getStorageSize();
+    }
+
 }

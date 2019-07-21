@@ -1,6 +1,5 @@
 package com.javaguru.shoppinglist.console.menu;
 
-import com.javaguru.shoppinglist.console.Reader;
 import com.javaguru.shoppinglist.domain.Category;
 
 class CategoryChooser {
