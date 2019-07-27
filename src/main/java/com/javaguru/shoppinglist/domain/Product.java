@@ -1,17 +1,36 @@
 package com.javaguru.shoppinglist.domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 import static java.math.RoundingMode.CEILING;
 
+@Entity
+@Table(name = "Product")
 public class Product {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "price")
     private BigDecimal price;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "category")
+    @Enumerated(EnumType.STRING)
     private Category category;
+
+    @Column(name = "discount")
     private BigDecimal discount;
+
+    @Column(name = "discountPrice")
     private BigDecimal discountPrice;
 
     public Long getId() {

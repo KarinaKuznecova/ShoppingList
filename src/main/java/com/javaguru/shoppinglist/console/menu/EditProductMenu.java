@@ -1,14 +1,26 @@
-package com.javaguru.shoppinglist.console;
+package com.javaguru.shoppinglist.console.menu;
 
+import com.javaguru.shoppinglist.console.MenuItem;
+import com.javaguru.shoppinglist.console.Reader;
 import com.javaguru.shoppinglist.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 
+@Component
 class EditProductMenu implements MenuItem {
     private Reader reader = new Reader();
+    private ProductService productService;
+    private String name = "Edit product";
+
+    @Autowired
+    public EditProductMenu(ProductService productService) {
+        this.productService = productService;
+    }
 
     @Override
-    public void action(ProductService productService) {
+    public void action() {
         long id = reader.getUserInput("Enter product Id");
         int pickedAction = pickEditAction();
         switch (pickedAction) {
@@ -30,7 +42,7 @@ class EditProductMenu implements MenuItem {
                 break;
             default:
                 System.out.println("Wrong number");
-                action(productService);
+                action();
         }
         System.out.println("Information is updated");
     }
@@ -44,5 +56,10 @@ class EditProductMenu implements MenuItem {
         System.out.println("4. Change description");
         System.out.println();
         return reader.getUserInput("Enter a number: ");
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
