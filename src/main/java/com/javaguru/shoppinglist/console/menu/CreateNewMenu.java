@@ -1,7 +1,5 @@
 package com.javaguru.shoppinglist.console.menu;
 
-import com.javaguru.shoppinglist.console.MenuItem;
-import com.javaguru.shoppinglist.console.Reader;
 import com.javaguru.shoppinglist.domain.Category;
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.service.ProductService;

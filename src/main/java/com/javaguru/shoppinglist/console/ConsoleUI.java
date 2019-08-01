@@ -1,5 +1,8 @@
 package com.javaguru.shoppinglist.console;
 
+import com.javaguru.shoppinglist.console.menu.MenuItem;
+import com.javaguru.shoppinglist.console.menu.Reader;
+
 import java.util.List;
 
 public class ConsoleUI {

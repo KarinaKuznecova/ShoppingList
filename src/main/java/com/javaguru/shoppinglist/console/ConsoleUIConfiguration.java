@@ -1,5 +1,6 @@
 package com.javaguru.shoppinglist.console;
 
+import com.javaguru.shoppinglist.console.menu.MenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
