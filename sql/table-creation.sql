@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS products (
   description VARCHAR(300) NULL,
   category VARCHAR (120) NOT NULL,
   discount DECIMAL (4, 2) NULL,
-  discountPrice DECIMAL (12,2) NULL,
+  discount_price DECIMAL (12,2) NULL,
   created timestamp default current_timestamp,
   primary key (id));
