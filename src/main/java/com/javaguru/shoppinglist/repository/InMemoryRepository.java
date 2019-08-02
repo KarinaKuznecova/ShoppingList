@@ -45,6 +45,4 @@ public class InMemoryRepository {
     public long getStorageSize() {
         return productRepository.size();
     }
-
-
 }

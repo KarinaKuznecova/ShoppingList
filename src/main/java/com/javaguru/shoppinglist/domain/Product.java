@@ -31,7 +31,7 @@ public class Product {
     @Column(name = "discount")
     private BigDecimal discount;
 
-    @Column(name = "discountPrice")
+    @Column(name = "discount_price")
     private BigDecimal discountPrice;
 
     public Long getId() {
