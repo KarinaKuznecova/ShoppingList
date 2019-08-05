@@ -29,7 +29,7 @@ public class AppConfig {
     public DataSource dataSource(@Value("${jdbc.url}") String url,
                                  @Value("${driverClass}") String driverClass,
                                  @Value("${database.user.name}") String userName,
-                                 @Value("${database.user.password}") String password) {
+                                 @Value("root") String password) {
 
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setUrl(url);
